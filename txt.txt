@@ -1,0 +1,40 @@
+./keytool-importkeypair -k ~/androidkey/debug.keystore -p android -pk8 platform.pk8 -cert platform.x509.pem -alias androiddebug
+
+生成debug.keystore 
+密钥路径 
+LA.UM.5.6\build\target\product\security\meig
+
+文件名：platform.pk8   platform.x509.pem
+
+运行命令
+./keytool-importkeypair -k ~/androidkey/debug.keystore -p android -pk8 platform.pk8 -cert platform.x509.pem -alias androiddebug
+
+-k  生成路径
+-p  密码
+-pk  platform.pk8
+-cert platform.x509.pem
+-alias  别名
+
+keystore默认密码配置如下：
+keyAlias 'androiddebug'
+keyPassword 'android'
+storeFile file('debug.keystore')
+storePassword 'android'
+
+
+如使用eclipse开发
+请在工程目录下面选择
+window->android->build下面配置custom debug kestory 就可以
+在AndroidManifest.xml中这只属性android:sharedUserId="android.uid.system
+
+若使用android studio开发 配置如下
+在build.gradle android 中配置
+    signingConfigs {
+        sginconfig {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('debug.keystore')
+            storePassword 'android'
+        }
+    }
+debug.keystore放置在app目录下面即可
